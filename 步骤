@@ -1,0 +1,30 @@
+1   在一个项目中可以创建一到多个应用，每个应用进行一种业务处理
+    创建应用的命令：
+    python manage.py startapp booktest
+
+1.1 定义模型类
+
+1.2 生成数据表
+    激活模型：编辑settings.py文件，将booktest应用加入到installed_apps中
+
+2   生成迁移文件：根据模型类生成sql语句
+    python manage.py makemigrations
+
+3   执行迁移：执行sql语句生成数据表
+    python manage.py migrate
+
+
+
+
+
+
+虚拟环境：workon,mkvirtualenv,rmvirtualenv,deactivate
+	pip list,pip install
+django的命令：django-admin startproject
+	python manage.py startapp
+	python manage.py makemigrations
+	python manage.py migrate
+	python manage.py runserver
+	python manage.py createsuperuser
+admin的使用admin.py
+	admin.site.register(模型类,admin类)
