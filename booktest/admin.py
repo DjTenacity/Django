@@ -1,6 +1,9 @@
 from django.contrib import admin
 from .models import *
-
+# 关联注册(  StackedInline  内嵌的方式)  (TabularInline 表格)
+class HeroInfoInline(admin.TabularInline):
+    model = HeroInfo
+    extra = 2
 
 # 来定义模型在Admin界面的显示方式
 class BookInfoAdmin(admin.ModelAdmin):
@@ -23,7 +26,8 @@ class BookInfoAdmin(admin.ModelAdmin):
         ('basic', {'fields': ['btitle']}),
         ('more', {'fields': ['bpub_date']}),
     ]
-
+    # 后台关联注册
+    inlines = [HeroInfoInline]
 
 # Register your models here.
 
