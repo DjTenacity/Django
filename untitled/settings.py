@@ -55,6 +55,7 @@ ROOT_URLCONF = 'untitled.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # 配置模板目录(查找模板路径)
         'DIRS': [os.path.join(BASE_DIR, 'templates')]
         ,
         'APP_DIRS': True,
