@@ -17,9 +17,13 @@ from django.conf.urls import url,include
 from django.contrib import admin
 from django.urls import path
 
-# from booktest import views
+from booktest import views
+# from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^',include('booktest.urls')),
+    # 正则中加上这个小括号 代表取这个值
+    url(r'(\d+)$',  views.show),
+
 ]

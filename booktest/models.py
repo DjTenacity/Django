@@ -19,7 +19,7 @@ class HeroInfo(models.Model):
     hbook = models.ForeignKey('BookInfo', on_delete=models.CASCADE, )
 
     def __str__(self):
-        return self.btitle#.encode('utf-8')
+        return self.hname#.encode('utf-8')
     # 即在外键值的后面加上
     # on_delete = models.CASCADE
     # 原因：

@@ -5,6 +5,14 @@
     <title>love Dj</title>
 </head>
 <body>
+<h2>{{ title }}</h2>
+
+<ul>
+    {% for book in list %}
+        <li> <a href="{{ book.id }}">{{ book.btitle }}</a></li>
+    {% endfor %}
+
+</ul>
 
 </body>
 </html>
