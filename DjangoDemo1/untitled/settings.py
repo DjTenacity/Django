@@ -81,6 +81,17 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+
+    # 'HOST': '数据库服务器ip，本地可以使用localhost',
+    #         'PORT': '端口，默认为3306',
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'test2',
+    #     'USER': 'loveDj',
+    #     'PASSWORD': 'jianchi#1314',
+    #     'HOST': 'localhost',
+    #     'PORT': '3306',
+    # }
 }
 
 

@@ -1,0 +1,22 @@
+
+ 1,数据库mql
+
+        python3.x连接Mysql请使用pymysql
+
+        mysqldb是为python2.x准备的
+
+        使用python3安装mysqldb时会出现你的问题
+
+        pymysql的安装方法：
+
+        命令行执行：pip3 install pymysql
+
+
+        如果你正在使用Django，那么往下看
+
+        Django默认与mysql连接时使用mysqldb（截至2.0.1版本，以后也许会调整），如何修改为使用pymysql呢？
+
+        在settings.py同级目录的__init__.py文件中加入下面的代码
+
+        import pymysql
+        pymysql.install_as_MySQLdb()

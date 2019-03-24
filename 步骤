@@ -28,3 +28,14 @@ django的命令：django-admin startproject
 	python manage.py createsuperuser
 admin的使用admin.py
 	admin.site.register(模型类,admin类)
+
+
+ORM:  “对象-关系-映射”  主要任务是：
+            根据对象的类型生成表结构
+            将对象、列表的操作，转换为sql语句
+            将sql查询到的结果转换为对象、列表
+        编程中,直接面向对象编程,将我们对对象和集合的操作映射成数据库的语句.
+        不需要面对任何一条sq 语句来开发, 如果数据库发生变化,只需要通过简单的配置就OK,不需要更改原来面向对象开发的代码
+
+
+
