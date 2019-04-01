@@ -85,11 +85,11 @@ DATABASES = {
     'default': {
         # 文件夹路径
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'loveDj',
-        'USER': 'loveDj',
-        'PASSWORD': 'jianchi#1314',
+        'NAME': 'lovedj',
+        'USER': 'lovedj',
+        'PASSWORD': 'jianchi1314',
         'HOST': 'localhost',
-        'PORT': '22',
+        'PORT': '3306',
     }
 }
 
