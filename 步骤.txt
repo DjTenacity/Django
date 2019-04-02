@@ -1,3 +1,6 @@
+﻿0  创建项目
+	django-admin startproject DjangoDemo
+
 1   在一个项目中可以创建一到多个应用，每个应用进行一种业务处理
     创建应用的命令：
     python manage.py startapp booktest

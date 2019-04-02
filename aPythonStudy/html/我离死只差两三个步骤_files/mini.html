@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://h5.mini.wps.cn/wps/agent/mini.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>agent</title>
+</head>
+
+<body>
+    <script>
+        (function () {
+            'use strict';
+            var adTypeObject = {};
+            var targetOrigin = location.ancestorOrigins[0]; //相当于父容器的host
+            // var reqtimes = 1; //360广告的请求次数
+
+            //请求360广告数据
+            function Get360Ads(adsId, promiseId, size, adType, uuuid) {
+
+                adTypeObject[adType] = {
+                    // targetOrigin: location.ancestorOrigins[0],
+                    reqtimes: 1 //360广告的请求次数
+                };
+
+                // adsId = 'RSBpV9'; //测试时使用
+                var reReqTimes = 3;
+                var uid = getHash(document.cookie + document.domain);
+                var url360 = location.protocol === 'https:' ? 'https://show-g.mediav.com/s?scheme=https&' : 'http://show.g.mediav.com/s?';
+                url360 = url360 + 'type=1&of=4&newf=1&impct=' + (size || 13) + '&showid=' + adsId + '&uid=' + uid + '&reqtimes=' + (adTypeObject[adType].reqtimes++) + '&tck=' + uuuid;
+
+                ajax({
+                    url: url360,
+                    type: 'GET',
+                    dataType: "jsonp",
+                    jsonp: "jsonp",
+                    success: successCallback
+                });
+
+                function successCallback(res) {
+                    // console.log(res);
+                    // console.log('Get360Ads postMessage', adTypeObject);
+                    window.parent.postMessage({ res: res, promiseId: promiseId, adType: adType }, targetOrigin);
+                }
+
+                function getHash(str) {
+                    var hash = 1,
+                        charCode = 0,
+                        idx;
+                    if (str) {
+                        hash = 0;
+                        for (idx = str.length - 1; idx >= 0; idx--) {
+                            charCode = str.charCodeAt(idx);
+                            hash = (hash << 6 & 268435455) + charCode + (charCode << 14);
+                            charCode = hash & 266338304;
+                            hash = charCode != 0 ? hash ^ charCode >> 21 : hash;
+                        }
+                    }
+                    return hash;
+                }
+            }
+
+            /**
+             *   360广告曝光点击检测模块
+             */
+            var AdsTrack = (function () {
+                return {
+                    //a 是数组？
+                    isArray: function (a) {
+                        return "[object Array]" == Object.prototype.toString.call(a);
+                    },
+                    //利用image src 发送曝光
+                    log: function (url) {
+                        var img = new Image(),
+                            key = 'mediav_sio_log_' + Math.floor(Math.random() * 2147483648).toString(36);
+                        window[key] = img;
+                        img.onload = img.onerror = img.onabort = function () {
+                            img.onload = img.onerror = img.onabort = null;
+
+                            window[key] = null;
+                            img = null;
+                        };
+
+                        img.src = url;
+                    },
+                    /**
+                     * @function
+                     * @description 曝光监测
+                     * @param {object} container - imptk
+                     * */
+                    //展示曝光
+                    trackImptk: function (imptk) {
+                        if (imptk) {
+                            imptk = this.isArray(imptk) ? imptk : imptk.split(',');
+                            for (var i = 0; i < imptk.length; i++) {
+                                this.log(imptk[i]);
+                            }
+                        }
+                    },
+                    /**
+                     * @function
+                     * @description 点击监测发送
+                     * @param {object} container - clktk
+                     * */
+                    trackClick: function (clktk) {
+                        if (clktk) {
+                            clktk = this.isArray(clktk) ? clktk : clktk.split(',');
+                            for (var i = 0; i < clktk.length; i++) {
+                                this.log(clktk[i]);
+                            }
+                        }
+                    }
+                };
+            })();
+
+            console.log('--------->>>>>monitor_agent_loaded');
+            //npp_sdk monitor_agent_loaded
+            AdsTrack.trackImptk(['http://ic.wps.cn/wpsv6internet/infos.ads?v=D1S1E1&d=ZG09L3dwcy9jbGllbnQvbWluaXNpdGUmcDA9ZTBkMDA5NzQyNGE0NGQ5YmEwMTI3ODI4OWI5ZjkxOTYmcDE9MDAwMjAuMDAwMDIzOTQmcDI9MTAuMS4wLjc0MDAmcDc9JnA4PTswOzI7JnA5PTQuMC42JnAxMD0xZDg3MmQyNTYzNGZkMWNkNWUxYWI5NGFjNTFjMDQ1YiZwMTE9MSZwMTI9V0EtMTAwMDAwMi0xJmFjdGlvbj1ucHBfc2RrJnBudW09OSZwMz1tb25pdG9yX2FnZW50X2xvYWRlZA==']);
+
+            //监听父域名发送过来的消息,并执行相应的函数
+            window.addEventListener('message', function (event) {
+
+                if (event.data.action === 'trackImptk' && event.data.ref === 'hotnews') {
+                    console.log('--------->>>>>monitor_agent_trackImptk_before');
+                    //monitor_agent_trackImptk_before
+                    AdsTrack.trackImptk(['http://ic.wps.cn/wpsv6internet/infos.ads?v=D1S1E1&d=ZG09L3dwcy9jbGllbnQvbWluaXNpdGUmcDA9ZTBkMDA5NzQyNGE0NGQ5YmEwMTI3ODI4OWI5ZjkxOTYmcDE9MDAwMjAuMDAwMDIzOTQmcDI9MTAuMS4wLjc0MDAmcDc9JnA4PTswOzI7JnA5PTQuMC42JnAxMD0xZDg3MmQyNTYzNGZkMWNkNWUxYWI5NGFjNTFjMDQ1YiZwMTE9MSZwMTI9V0EtMTAwMDAwMi0xJmFjdGlvbj1ob3RuZXdzX3NkayZwbnVtPTkmcDM9bW9uaXRvcl9hZ2VudF90cmFja0ltcHRrX2JlZm9yZQ==']);
+                }
+                if (event.origin !== targetOrigin) {
+                    console.log(event.data);
+                    return;
+                }
+
+                switch (event.data.action) {
+                    case 'get360AdData':
+                        // console.log('Get360Ads' + event.data.adsId, event.data.promiseId, event.data.size, event.data.adType);
+
+                        Get360Ads(event.data.adsId, event.data.promiseId, event.data.size, event.data.adType, event.data.uuuid);
+                        break;
+                    case 'log':
+                        AdsTrack.log(event.data.url);
+                        break;
+                    case 'trackImptk':
+                        AdsTrack.trackImptk(event.data.imptk);
+
+                        //差量监控上报
+                        if (event.data.ref === 'hotnews') {
+                            console.log('--------->>>>>monitor_agent_trackImptk');
+                            //monitor_agent_trackImptk
+                            AdsTrack.trackImptk(['http://ic.wps.cn/wpsv6internet/infos.ads?v=D1S1E1&d=ZG09L3dwcy9jbGllbnQvbWluaXNpdGUmcDA9ZTBkMDA5NzQyNGE0NGQ5YmEwMTI3ODI4OWI5ZjkxOTYmcDE9MDAwMjAuMDAwMDIzOTQmcDI9MTAuMS4wLjc0MDAmcDc9JnA4PTswOzI7JnA5PTQuMC42JnAxMD0xZDg3MmQyNTYzNGZkMWNkNWUxYWI5NGFjNTFjMDQ1YiZwMTE9MSZwMTI9V0EtMTAwMDAwMi0xJmFjdGlvbj1ob3RuZXdzX3NkayZwbnVtPTkmcDM9bW9uaXRvcl9hZ2VudF90cmFja0ltcHRr']);
+                        }
+
+                        break;
+                    case 'trackClick':
+                        AdsTrack.trackClick(event.data.clktk);
+
+                        //差量监控上报
+                        if (event.data.ref === 'hotnews') {
+                            //monitor_agent_trackClick
+                            AdsTrack.trackClick(['http://ic.wps.cn/wpsv6internet/infos.ads?v=D1S1E1&d=ZG09L3dwcy9jbGllbnQvbWluaXNpdGUmcDA9ZTBkMDA5NzQyNGE0NGQ5YmEwMTI3ODI4OWI5ZjkxOTYmcDE9MDAwMjAuMDAwMDIzOTQmcDI9MTAuMS4wLjc0MDAmcDc9JnA4PTswOzI7JnA5PTQuMC42JnAxMD0xZDg3MmQyNTYzNGZkMWNkNWUxYWI5NGFjNTFjMDQ1YiZwMTE9MSZwMTI9V0EtMTAwMDAwMi0xJmFjdGlvbj1ob3RuZXdzX3NkayZwbnVtPTkmcDM9bW9uaXRvcl9hZ2VudF90cmFja0NsaWNr'])
+                        }
+
+                        break;
+                    default:
+                        break;
+                }
+            }, false);
+
+            //JSONP请求
+            function ajax(params) {
+                params = params || {};
+                params.data = params.data || {};
+                var json = params.jsonp ? jsonp(params) : json(params);
+
+                // jsonp请求   
+                function jsonp(params) {
+                    //创建script标签并加入到页面中   
+                    var callbackName = params.jsonp + random();
+                    var head = document.getElementsByTagName('head')[0];
+                    // 设置传递给后台的回调参数名   
+                    params.callback = '&jsonp=' + callbackName;
+                    // var data = formatParams(params.data);
+                    var script = document.createElement('script');
+                    head.appendChild(script);
+                    //创建jsonp回调函数   
+                    window[callbackName] = function (json) {
+                        head.removeChild(script);
+                        clearTimeout(script.timer);
+                        window[callbackName] = null;
+                        params.success && params.success(json);
+                    };
+                    //发送请求   
+                    script.src = params.url + params.callback;
+                    //为了得知此次请求是否成功，设置超时处理   
+                    if (params.time) {
+                        script.timer = setTimeout(function () {
+                            window[callbackName] = null;
+                            head.removeChild(script);
+                            params.error && params.error({ message: '超时' });
+                        }, time);
+                    }
+                };
+
+                // 获取随机数   
+                function random() {
+                    return Math.floor(Math.random() * 100000 + 500);
+                }
+            }
+
+        })();
+
+    </script>
+
+
+</body></html>
