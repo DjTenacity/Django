@@ -16,8 +16,9 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
-
+# http://127.0.0.1:8000/booktest/
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'booktest/',include('booktest.urls')),
+    # url(r'booktest/', include('booktest.urls' )),
+    url(r'booktest/',include('booktest.urls',namespace='booktest')),
 ]

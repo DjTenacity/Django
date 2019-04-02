@@ -18,7 +18,7 @@
 
 编辑views.py文件，在方法中调用模板
 
-
+manage.py runserver 8000
 
 
 虚拟环境：workon,mkvirtualenv,rmvirtualenv,deactivate
