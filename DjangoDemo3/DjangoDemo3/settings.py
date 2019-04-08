@@ -23,12 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '%2$1*8esk5!w_t(%3lk9e9g#a9_vuypz)ky1o(gfu%8qks47^!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True 开发阶段为True
-DEBUG = False
+# DEBUG =  False 开发阶段为True
+DEBUG = True
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['*', ]
-
 
 # Application definition
 
@@ -39,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'booktest',
 ]
 
 MIDDLEWARE = [

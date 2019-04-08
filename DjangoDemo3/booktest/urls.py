@@ -3,7 +3,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 from booktest import views
-
+# 解决Specifying a namespace in include（）withou providing an app_name
+app_name='[booktest]'
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^(\d+)$', views.detail, name='detail'),
