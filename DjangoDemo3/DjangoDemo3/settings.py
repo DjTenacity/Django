@@ -28,7 +28,8 @@ DEBUG = True
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['*', ]
-
+# 基于缓存的会话：只存在本地内在中，如果丢失则不能找回，比数据库的方式读写更快
+# SESSION_ENGINE='django.contrib.sessions.backends.cache'
 # Application definition
 
 INSTALLED_APPS = [
