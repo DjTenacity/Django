@@ -1,5 +1,5 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render,redirect
 
 
 # Create your views here.
@@ -35,3 +35,40 @@ def getTest3(request):
     b = request.GET['b']
     context = {'a': a, 'b': b}
     return render(request, 'booktest/getTest3.html', context)
+
+
+def postTest1(request):
+    return render(request, 'booktest/postTest1.html')
+
+
+def postTest2(request):
+    uname = request.POST['uname']
+    upwd = request.POST['upwd']
+    ugender = request.POST.get("ugender")
+    uhobby = request.POST.getlist('uhobby')
+
+    context = {
+        'uname': uname,
+        'upwd': upwd,
+        'ugender': ugender,
+        'uhobby': uhobby
+    }
+    return render(request, 'booktest/postTest2.html', context)
+
+
+def cookieTest(request):
+    # response =HttpResponse()
+    # response.set_cookie('t1','abccc')
+
+    response = HttpResponse()
+    cookie = request.COOKIES
+    if cookie.has_key("1"):
+        response.write(cookie['t1'])
+    return response
+
+# 重定向
+def redTest1(request):
+    # return HttpResponseRedirect("/booktest/redTest2/")
+    return redirect("/booktest/redTest2/")
+def redTest2(request):
+    return HttpResponse("转来的页面")
