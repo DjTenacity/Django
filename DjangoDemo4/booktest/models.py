@@ -19,7 +19,7 @@ class HeroInfo(models.Model):
     hgender = models.BooleanField()
     hcontent = models.CharField(max_length=1000)
     isDelete = models.BooleanField()
-    book = models.ForeignKey('BookInfo')
+    hbook = models.ForeignKey('BookInfo', on_delete=models.CASCADE,)
 
     def showname(self):
         return self.hname + self.hcontent;

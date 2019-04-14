@@ -5,6 +5,26 @@
     <title>Title</title>
 </head>
 <body>
+<a href="{% url 'booktest:show' "123434" 123434 %}">show</a>
+
+<hr>
+奇数行红色 ,偶数行蓝色
+</hr>
+<hr>
+{#<ul>#}
+{#    {% for hero in list %}#}
+        {#        能被2整除#}
+{#        {% if forloop.counter|divisibleby:"2" %}#}
+{#        <li style="color: red;">{{ forloop.counter }}:{{ hero.hname }}}</li>#}
+{#        {% else %}#}
+{#        <li style="color: blue;">{{ forloop.counter }}:{{ hero.hname }}}</li>#}
+{#        {% endif %}#}
+{##}
+{#    {% empty %}#}
+{#        <li> 啥都没有</li>#}
+{#    {% endfor %}#}
+</ul>
+</hr>
 
 </body>
 </html>

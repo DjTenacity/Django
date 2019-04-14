@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span>当显示不被信任的变量时使用escape过滤器，一般省略，因为Django自动转义</span>
+<br>
+escape:{{t1|escape}}
+<br>
+ safe:{{ t1|safe }}
+<br>
+autoescape:
+{% autoescape off %}
+{{ t1 }}
+{% endautoescape %}
+
+<br>
+字面值
+{{ data|default:"<b>123</b>" }}
+
+<br>
+手动转义
+{{ data|default:"&lt;b&gt;123&lt;/b&gt;" }}
+<br>
+再次转义
+{{ data|default:"&amp;lt;b&amp;gt;123&amp;lt;/b&amp;gt;" }}
+
+</body>
+</html>
