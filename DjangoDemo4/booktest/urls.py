@@ -17,6 +17,10 @@ urlpatterns = [
 
     url(r'^htmlText$', views.htmlText, name='htmlText'),
 
-    url(r'^csrf$', views.csrf),
+    url(r'^csrf$', views.csrf1),
     url(r'^csrf2$', views.csrf2),
+    url(r'^verifyCode$', views.verifyCode),
+    url(r'^verifyTest', views.verifyTest),
+    url(r'^verifyTest2$', views.verifyTest2),
+
 ]

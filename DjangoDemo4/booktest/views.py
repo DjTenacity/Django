@@ -1,3 +1,5 @@
+from random import randrange
+
 from django.http import HttpRequest
 from django.shortcuts import render
 
@@ -55,3 +57,50 @@ def csrf1(request):
 def csrf2(request):
     uname = request.FORM['uname']
     return HttpRequest(uname)
+
+
+# 验证码
+def verifyCode(request):
+    from PIL import Image, ImageDraw, ImageFont
+    import random
+    # 创建背景色
+    bgColor = (random, randrange(50, 100), random, randrange(50, 100), 0)
+    # 规定宽高
+    width = 100
+    height = 25
+    # 创建画布
+    image = Image.new('RGB', (width, height), bgColor)
+    font = ImageFont.truetype('FreeMono.ttrf', 24)
+    # 创建画笔
+    draw = ImageDraw.Draw(image)
+    # 创建文本内容
+    text = "abvc"
+    # 逐个绘制字符
+    textTemp = ''
+    for i in range(4):
+        textTemp1 = text[random.randrange(0, len(text))]
+        textTemp += textTemp1
+        draw.text((i * 25, 0), textTemp1,
+                  (255, 255, 255), font)
+    request.session['code'] = textTemp
+    draw.text((0, 0), text)
+    # 保存到内存流
+    import io.StringIO
+    buf = io.StringIO()
+    image.save(buf, 'png')
+
+    # 将内存流中的内容输出到客户端
+    return HttpRequest(buf.getvalue(), "image/png")
+
+
+def verifyTest(request):
+    return render(request, 'booktest/verifyCodeTest.html')
+
+
+def verifyTest2(request):
+    code1 = request.POST['code1']
+    code2 = request.session['code1']
+    if (code1 == code2):
+        return HttpRequest("OK")
+    else:
+        return HttpRequest("NO")
