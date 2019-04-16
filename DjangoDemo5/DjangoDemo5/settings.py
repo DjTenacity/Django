@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'booktest'
 ]
-
+# 中间件  Aop
 MIDDLEWARE = [
+    'booktest.MyException.MyException',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
