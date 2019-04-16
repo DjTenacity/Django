@@ -1,0 +1,14 @@
+
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="/static/booktest/68do3.jpg" width="100" height="100" alt="">
+{#static 跟setting里面的STATIC_URL 匹配上之后,才会 STATICFILES_DIRS#}
+<img src="{% static "booktest/68do3.jpg" %}" alt="My image"/>
+</body>
+</html>
