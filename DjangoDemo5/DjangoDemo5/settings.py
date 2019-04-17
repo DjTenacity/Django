@@ -26,7 +26,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -36,11 +35,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'booktest'
+    'booktest',
 ]
 # 中间件  Aop
 MIDDLEWARE = [
-    'booktest.MyException.MyException',
+    # 'booktest.MyException.MyException',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -116,9 +115,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 # 名字要尽量一致 '/static/'  'static' ,可以不一样 ,但是使用的时候的链接地址要跟 STATIC_URL一致
-#逻辑的匹配规则,,决定了在模板中分析静态文件的路径
+# 逻辑的匹配规则,,决定了在模板中分析静态文件的路径
 STATIC_URL = '/static/'
-#物理名字 决定物理上寻找路径地址
+# 物理名字 决定物理上寻找路径地址
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static')
 ]
+# 图片存储路径 ,文件夹要创建 ,否则报错
+# MEDIA_ROOT = os.path.join(BASE_DIR, "static/media/")
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static\\media\\')
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.8/howto/static-files/
+
