@@ -1,17 +1,20 @@
-#coding=utf-8
+# coding=utf-8
 
 from django.shortcuts import render
-from django.http import HttpResponse,JsonResponse
+from django.http import HttpResponse, JsonResponse
 import os
 from django.conf import settings
 # from models import *
-from django.core.paginator import  *
+from django.core.paginator import *
 import json
 
 # Create your views here.
+from booktest.models import HeroInfo
+
 
 def index(request):
     return render(request, "booktest/index.html")
+
 
 def MyExp(request):
     # 异常
@@ -35,5 +38,15 @@ def uploadHandle(request):
             pic.write(c)
     return HttpResponse('<img src="/static/media/%s/">' % pic1.name)
     # return HttpResponse("上传"+picName+"ok")
+
+
 # else:
 #     return HttpResponse("上传 error")
+
+# 页码默认值是 1
+def herolist(request, pindex=1):
+    list = HeroInfo.objects.all()
+    paginator = Paginator(list, 2)
+    page = paginator.page(int(pindex))
+    context = {'page': page}
+    return render(request, 'booktest/herolist.html', context)

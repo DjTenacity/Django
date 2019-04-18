@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    {% for hero in page %}
+        <li>{{ hero.hname }}</li>
+    {% endfor %}
+</ul>
+<hr>
+{% for index in page.paginator.page_range %}
+{#    必须有空格,否则报错#}
+    {% if index == page.number %}
+        {{ index }}
+    {% else %}
+        <a href="/herolist/{{ index }}"> {{ index }}</a>
+    {% endif %}
+{% endfor %}
+
+</body>
+</html>

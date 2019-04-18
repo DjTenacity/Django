@@ -1,12 +1,13 @@
 from django.contrib import admin
 
 # Register your models here.
-from booktest.models import UserInfo
+from booktest.models import UserInfo, HeroInfo
 
-@admin.register(UserInfo)
-class UserInfoAdmin(admin.moderAdmin):
+
+@admin.register(HeroInfo)
+class UserInfoAdmin(admin.ModelAdmin):
     # 通过重写admin.ModelAdmin的属性规定显示效果，属性主要分为列表页、增加修改页两部分
-    list_display =['uname']
+    list_display =['hname']
 
 # 使用方式一：注册参数 admin.site.register(HeroInfo,HeroAdmin)
 # 使用方式二：注册装饰器

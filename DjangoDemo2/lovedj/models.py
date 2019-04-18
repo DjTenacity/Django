@@ -42,7 +42,7 @@ class BookInfo(models.Model):
     #方案一 类方法
     # 调用：book = BookInfo.create("hello", datetime(1980, 10, 11));
     # 保存：book.save()
-    @classmethod
+    # @classmethod
     def create(cls,btitle,bpub_date):
         b=BookInfo()
         b.btitle=btitle
@@ -57,5 +57,7 @@ class Hero(models.Model):
     hgender = models.BooleanField(default=True)
     hcontent = models.CharField(max_length=2000)
     isDelete = models.BooleanField(default=False)
-    book = models.ForeignKey(BookInfo)
+    # book = models.ForeignKey(BookInfo)
+    hbook = models.ForeignKey('BookInfo', on_delete=models.CASCADE, )
+
 
