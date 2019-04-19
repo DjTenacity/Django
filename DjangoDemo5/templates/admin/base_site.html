@@ -1,0 +1,11 @@
+{% extends "admin/base.html" %}
+
+{% block title %}
+    这是我自己定义的admin模板
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

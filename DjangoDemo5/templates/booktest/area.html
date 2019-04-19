@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Title</title>
+    <script src="/static/booktest/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function () {
+            //查询省信息
+            pro=$('#pro')
+            $.get('/area/0/',function (dic) {//{data:[[],[],[]]}
+                $.each(dic.data,function (index, item) {//[id,title]
+                    pro.append('<option value="'+item[0]+'">'+item[1]+'</option>')
+                })
+            })
+        });
+
+    </script>
+</head>
+<body>
+<select id="pro">
+    <option value="">请选择省</option>
+</select>
+
+<select id="city">
+    <option value="">请选择市</option>
+</select>
+<select id="dis">
+    <option value="">请选择区</option>
+</select>
+</body>
+</html>

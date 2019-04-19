@@ -14,4 +14,8 @@ urlpatterns = [
 
     # url(r'^area/$', views.area),
     # url(r'^area/(\d+)/$', views.area2),
+
+    url(r'^htmlEditor',views.htmlEditor ),
+    url(r'^cache1', views.cache1)
+
 ]

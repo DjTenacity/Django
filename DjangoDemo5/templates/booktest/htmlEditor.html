@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src='/static/tiny_mce/tiny_mce.js'></script>
+    <script type="text/javascript">
+        tinyMCE.init({
+            'mode':'textareas',
+            'theme':'advanced',
+            'width':400,
+            'height':100
+        });
+    </script>
+</head>
+<body>
+<form method="post" action="/content/">
+    <input type="text" name="hname">
+    <br>
+    <textarea name='hcontent'>哈哈，这是啥呀</textarea>
+    <br>
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

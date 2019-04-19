@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^',include('booktest.urls')),
     # url(r'^', include('booktest.urls', namespace='booktest')),
+    url(r'^tinymce/', include('tinymce.urls')),
 
 ]
