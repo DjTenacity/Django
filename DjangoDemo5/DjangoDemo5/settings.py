@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'booktest',
     'tinymce',
-    # 'djcelery',
+    'haystack',
+    'djcelery',
+    # 'kobu.transport.django',
 ]
 # 中间件  Aop
 MIDDLEWARE = [
@@ -144,3 +146,20 @@ CACHES = {
         'TIMEOUT': 60,
     },
 }
+# 添加搜索引擎
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_cn_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+    }
+}
+
+# 自动生成索引
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+import djcelery
+
+djcelery.setup_loader()
+BROKER_URL = 'django://'# 'redis://127.0.0.1:6379/0'
+CELERY_IMPORTS = ('booktest.task')
+# 在应用目录下创建task.py文件

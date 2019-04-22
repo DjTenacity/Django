@@ -12,7 +12,11 @@
 * 工人worker：在一个新进程中，负责执行队列中的任务
 * 代理人broker：负责调度，在布置环境中使用redis
 ####使用
-* 安装包
+* 安装包 
+```
+pip install django-celery
+pip install Celery
+```
 ```celery==3.1.25
 celery-with-redis==3.0
 django-celery==3.1.17

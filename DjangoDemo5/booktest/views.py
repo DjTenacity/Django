@@ -7,7 +7,7 @@ from django.conf import settings
 # from models import *
 from django.core.paginator import *
 import json
-
+from booktest.task import *
 # Create your views here.
 
 from booktest.models import HeroInfo, AreaInfo, Test1
@@ -112,7 +112,8 @@ def mysearch(request):
     return render(request,'booktest/mysearch.html')
 
 #celery异步
-# def celeryTest(request):
-#     # show()
-#     show.delay()
-#     return HttpResponse('ok')
+def celeryTest(request):
+    # show()
+    sayhello.delay()
+    return HttpResponse('ok')
+

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{#_blank 是打开个新页面，blank 是打开个页面，并命名为 blank。 #}
+{#blank 只会在第一次新打开的窗口上重新加载，_blank 点击多少次就会打开多少新窗口。#}
+<form method='get' action="/search/" target="_blank">
+    <input type="text" name="q">
+    <input type="submit" value="查询">
+</form>
+</body>
+</html>
