@@ -1,0 +1,2 @@
+{{object.hname}}
+{{object.hcontent}}
