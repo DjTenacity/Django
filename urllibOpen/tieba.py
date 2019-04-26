@@ -26,7 +26,7 @@ def writePage(html, filename):
     """
     print("正在保存 " + filename)
     # 文件写入
-    with open(filename, "w") as f:
+    with open(filename, "wb") as f:
         f.write(html)
     print("-" * 30)
 
@@ -56,6 +56,7 @@ if __name__ == "__main__":
     endPage = int(input("请输入结束页："))
 
     url = "http://tieba.baidu.com/f?"
-    key = urllib.urlencode({"kw": kw})
+    # 通过urllib.parse.urlencode()方法，将字典键值对按URL编码转换，从而能被web服务器接受。
+    key = urllib.parse.urlencode({"kw": kw})
     fullurl = url + key
     tiebaSpider(fullurl, beginPage, endPage)

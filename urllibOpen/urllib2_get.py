@@ -11,8 +11,8 @@ keyword =  input("请输入需要查询的关键字： ")
 
 wd = {"wd" : keyword}
 
-# 通过urllib.urlencode() 参数是一个dict类型
-wd = urllib.urlencode(wd)
+# 通过urllib.parse.urlencode() 参数是一个dict类型
+wd = urllib.parse.urlencode(wd)
 
 # 拼接完整的url
 fullurl = url + "?" + wd

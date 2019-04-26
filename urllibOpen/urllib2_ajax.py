@@ -14,8 +14,8 @@ formdata = {
     "limit": "20"
 }
 
-data = urllib.urlencode(formdata)
+data = urllib.parse.urlencode(formdata) .encode("utf-8")
 
 request = urllib.request.Request(url, data=data, headers=headers)
 
-print(urllib.request.urlopen(request).read())
+print(urllib.request.urlopen(request).read() .decode("utf-8"))

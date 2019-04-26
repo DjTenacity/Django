@@ -31,7 +31,7 @@ formdata = {
 }
 
 # 经过urlencode转码
-data = urllib.request.urlencode(formdata)
+data = urllib.parse.urlencode(formdata)
 
 # 如果Request()方法里的data参数有值，那么这个请求就是POST
 # 如果没有，就是Get
