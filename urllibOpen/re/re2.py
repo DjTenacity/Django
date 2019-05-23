@@ -14,6 +14,9 @@ print("----------------sub-----------------")
 
 pattern = re.compile(r"(\w+) (\w+)")
 str = "hello world , hello  Today"
+print(re.split(r" +", str))  # r" +"  表示一个或多个空格 , \s表示空格
+print(re.split("\s", str))
+print(re.findall(r"\b[a-zA-Z]+\b", str))
 print(pattern.sub("Hello world", str))
 print(pattern.sub("\1 \2", str))
 print(pattern.sub(r"\1 \2", str))

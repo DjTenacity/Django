@@ -10,7 +10,7 @@ import re
 ret = re.match("itcast","itcast.cn")
 print(ret.group())
 
-# .  匹配任意字符
+# .  匹配任意字符,空白也算   (除了\n)
 ret = re.match(".", "a")
 print(ret.group())
 
@@ -23,6 +23,8 @@ print(ret.group())
 # \W  匹配非单词字符
 
 ret = re.match(".", "a")
+print(ret.group())
+ret = re.match(".", " ")
 print(ret.group())
 
 # 如果hello的首字符小写，那么正则表达式需要小写的h
