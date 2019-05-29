@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-import urllib
+import urllib.parse
 import urllib.request
 import http.cookiejar
 
@@ -25,7 +25,7 @@ url = "http://www.renren.com/PLogin.do"
 data = {"email":"mr_mao_hacker@163.com", "password":"alarmchime"}
 
 # 通过urlencode()编码转换
-data = urllib.urlencode(data)
+data = urllib.parse.urlencode(data)
 
 # 第一次是post请求，发送登录需要的参数，获取cookie
 request = urllib.request.Request(url, data = data)
