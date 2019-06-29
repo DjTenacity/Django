@@ -3,7 +3,7 @@
 import urllib.parse
 import urllib.request
 from lxml import etree
-
+import bs4
 
 # import lxml.html
 
