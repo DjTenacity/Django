@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-import urllib
+import urllib.parse
 import urllib.request
 
 # 通过抓包的方式获取的url，并不是浏览器上显示的url

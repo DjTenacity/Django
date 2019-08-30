@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-import urllib
 import urllib.request
-
+import urllib.parse
 url = "https://movie.douban.com/j/chart/top_list?type=11&interval_id=100%3A90&action"
 
 headers = {
