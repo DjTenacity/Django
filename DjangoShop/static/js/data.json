@@ -1,0 +1,9 @@
+{
+	"code":1,
+	"data":{
+		"name":"快乐之裤",
+		"age":28,
+		// "info":["male","engineer"]
+	}
+	"message":""
+}

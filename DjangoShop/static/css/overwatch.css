@@ -1,0 +1,151 @@
+body{
+	font-family: 'Microsoft Yahei';
+}
+.navbar{
+	margin-bottom: 5px;
+}
+.navbar-brand{
+	padding:6px 15px;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+	border-color: pink;
+}
+.navbar-inverse{
+	background-color: #ff722b;
+	border-color: #080808;
+}
+.navbar-inverse .navbar-nav>li>a{
+	color: #fff;
+}
+.navbar-inverse .navbar-toggle{
+	border-color: #fff;
+}
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover{
+	background-color: pink;
+}
+.navbar-form form{
+	background: #fff;
+}
+.navbar-inverse {
+	border-color:#fff;
+}
+
+.jumbotron{
+	margin-bottom: 18px;
+	background: url(../images/overwatch_banner22.jpg) -600px center no-repeat;
+}
+
+@media (max-width:992px) {
+	/*.jumbotron{
+		background: url(../images/overwatch_banner22.jpg) center center no-repeat;
+	}*/
+	.jumbotron .active_title{
+		margin-top:0px;
+	}
+}
+
+.jumbotron .active_title{
+	font:28px/35px 'Microsoft Yahei';
+	color: #fff;
+	text-align: center;
+}
+.jumbotron .active_detail{
+	font:16px/25px 'Microsoft Yahei';
+	color: #fff;
+}
+
+.active_pic_title{
+	font-size: 24px;
+	color: #333;
+}
+
+.active_pic_detail{
+	font-size: 14px;
+	color: #333;
+	padding-bottom: 10px;
+	text-align: center;
+	
+}
+.pic_detail_title{
+	text-align: center;
+	font-size: 15px;
+	color: #333;
+
+}
+.thumbnail{
+	padding: 10px;
+	/*max-width: 270px;*/
+}
+.common_title{
+	background-color: #ff722b;
+	height: 40px;
+}
+.common_title h3{
+	padding: 0px;
+	margin: 0px;
+	font-size: 16px;
+	color: #fff;
+	line-height: 40px;
+	text-indent: 20px;
+}
+.common_title a{
+	font-size: 12px;
+	color: #fff;
+	/*font:12px/25px 'Microsoft Yahei';*/
+	margin: 15px 20px 0 0;
+
+}
+.goods_list{
+	/*不让 下面的商品 突出去*/
+	margin: 0px;
+	padding-top: 10px;
+}
+.goods_list_show{
+	
+	border: 1px solid #ddd;
+	padding-top: 16px;
+}
+.goods_list_show img{
+	 margin: 0 auto;
+}
+
+.goods_list_show .goods_name{
+	text-align: center;
+	color: red;
+	font-size: 14px;
+}
+.goods_list_show .goods_price{
+	text-align: center;
+	color: red;
+	font-size: 16px;
+}
+
+.goods_list_show .goods_price em{
+	font-size: 22px;
+	font-style: normal;
+}
+
+@media (min-width:768px){
+.goods_list_show:nth-child(2n){
+		 border-right-color: #fff;
+	}
+	.goods_list_show:nth-child(3n){
+		 border-right-color: #ddd;
+	}
+}
+@media (min-width:992px){
+	.goods_list_show:nth-child(3n){
+		 border-right-color: #fff;
+	}
+	.goods_list_show:nth-child(4n){
+		 border-right-color: #ddd;
+	}
+}
+@media (min-width:1200px){
+	.goods_list_show:nth-child(4n){
+		 border-right-color: #fff;
+	}
+	.goods_list_show:nth-child(6n){
+		 border-right-color: #ddd;
+	}
+}

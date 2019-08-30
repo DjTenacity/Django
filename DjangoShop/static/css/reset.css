@@ -1,0 +1,47 @@
+	/*将标签默认的间距设为0*/
+	/*仅写要用到的标签,否则用不到也会查找浪费性能*/
+body,ul,p,h1,h2,h3,h4,h5,h6,dl,dd,input,select,form{ 
+	padding: 0;
+	margin: 0;
+}
+h1,h2,h3,h4,h5,h6{
+	/*会继承 在body中设置的字体大小*/
+	font-size: 100%;
+}
+/*去掉默认的项目图标:小圆点*/
+ul{
+	list-style: none;
+}
+/*去掉倾斜*/
+em{
+	font-style: normal;
+}
+/*下划线*/
+a{
+	text-decoration: none;
+}
+/*ie 中 a标签包裹img标签(图片做链接)会有边框*/
+img{
+	border: none;
+}  
+
+/*清除margintop塌陷*/
+
+.clearfix:before,.clearfix:after{
+	content: "";
+	display: table;
+}
+.clearfix:after{
+	clear: both;
+}
+	/*解决浮动*/ 
+
+.clearfix{
+	zoom:1;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
